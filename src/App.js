@@ -36,16 +36,19 @@ const scholarDetails = [
 
 
 
-function transformScholarToJSX(oneScholar): JSX.Element {
-    return <ScholarView key={oneScholar.name} scholar={oneScholar} />
-}
-
 function App() {
     return (
         <div className="App">
             <h1>Hello Cohort 6</h1>
 
-            {scholarDetails.map(transformScholarToJSX)}
+            {
+                scholarDetails.map((oneScholar) => (
+                    <ScholarView
+                        key={oneScholar.name}
+                        scholar={oneScholar}
+                    />
+                ))
+            }
 
         </div>
     );
