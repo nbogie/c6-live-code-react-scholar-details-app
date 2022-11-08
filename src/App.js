@@ -1,6 +1,5 @@
 import "./App.css";
-
-
+import React from "react"
 
 const scholarDetails = [
     {
@@ -36,15 +35,16 @@ const scholarDetails = [
 ];
 function App() {
 
+
     const detailsElements = [];
 
     for (let i = 0; i < scholarDetails.length; i++) {
         const scholar = scholarDetails[i];
-        const newElement = (<ScholarView
-            key={scholar.name}
-            name={scholar.name}
-            interests={scholar.interests}
-            location={scholar.location} />
+        const newElement = (
+            <ScholarView
+                scholar={scholar}
+                key={scholar.name}
+            />
         );
         detailsElements.push(newElement);
     }
@@ -56,14 +56,15 @@ function App() {
         </div>
     );
 }
-
 function ScholarView(props) {
+    const scholar = props.scholar;
 
     // console.log("what is my properties", props);
     return (
         <div className="scholar">
-            <div className="scholarName">{props.name}</div>
-            <div className="scholarInterests">{props.interests}</div>
+            <div className="scholarName">{scholar.name}</div>
+            <div className="scholarInterests">{scholar.interests}</div>
+            <div className="scholarLocation">{scholar.location}</div>
         </div>
     );
 }
