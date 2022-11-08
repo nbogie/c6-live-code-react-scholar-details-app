@@ -33,26 +33,20 @@ const scholarDetails = [
         location: "tokyo"
     }
 ];
+
+
+
+function transformScholarToJSX(oneScholar): JSX.Element {
+    return <ScholarView key={oneScholar.name} scholar={oneScholar} />
+}
+
 function App() {
-
-
-    const detailsElements = [];
-
-    for (let i = 0; i < scholarDetails.length; i++) {
-        const scholar = scholarDetails[i];
-        const newElement = (
-            <ScholarView
-                scholar={scholar}
-                key={scholar.name}
-            />
-        );
-        detailsElements.push(newElement);
-    }
-
     return (
         <div className="App">
             <h1>Hello Cohort 6</h1>
-            {detailsElements}
+
+            {scholarDetails.map(transformScholarToJSX)}
+
         </div>
     );
 }
